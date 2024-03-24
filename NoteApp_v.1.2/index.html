@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note App</title>
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <app-header>Note App</app-header>
+    <div id="app">
+      <form id="noteForm">
+        <input
+          type="text"
+          id="noteTitle"
+          placeholder="Enter note title"
+          required
+        />
+        <textarea
+          id="noteBody"
+          placeholder="Enter note body"
+          required
+        ></textarea>
+        <button type="submit">Add Note</button>
+      </form>
+      <note-item>
+        <span slot="title">Welcome to Notes, Dimas!</span>
+        <span slot="body"
+          >Welcome to Notes! This is your first note. You can archive it, delete
+          it, or create new ones.</span
+        >
+      </note-item>
+      <!-- Daftar Catatan -->
+      <div id="noteList"></div>
+    </div>
+    <script src="script/script.js" type="module" defer></script>
+    <script src="script/note-item.js" type="module" defer></script>
+    <script src="script/app-header.js" type="module" defer></script>
+  </body>
+</html>

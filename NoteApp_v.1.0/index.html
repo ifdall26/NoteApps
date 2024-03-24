@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikasi Catatan</title>
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Daftar Catatan</h1>
+      <div id="daftar-catatan"></div>
+      <h2>Tambah Catatan Baru</h2>
+      <form id="form-catatan">
+        <label for="judul-catatan">Judul:</label>
+        <input type="text" id="judul-catatan" required />
+        <label for="isi-catatan">Isi:</label>
+        <textarea id="isi-catatan" rows="4" required></textarea>
+        <button type="submit">Tambah Catatan</button>
+      </form>
+    </div>
+
+    <script src="script/script.js"></script>
+  </body>
+</html>
