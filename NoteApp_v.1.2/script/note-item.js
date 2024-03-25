@@ -5,7 +5,7 @@ class NoteItem extends HTMLElement {
     this.shadowRoot.innerHTML = `
           <style>
               .note {
-                  background-color: #f9f9f9;
+                  background-color: #EDEDED;
                   border: 1px solid #ddd;
                   border-radius: 5px;
                   padding: 10px;
@@ -15,6 +15,7 @@ class NoteItem extends HTMLElement {
               
               .note h2 {
                   margin-top: 0;
+                  color: #da0037;
               }
               
               .note p {
