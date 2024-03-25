@@ -59,9 +59,7 @@ class NoteItem extends HTMLElement {
         try {
           this.remove();
           const noteId = this.getAttribute("data-id");
-          // Menghapus catatan dari array notesData berdasarkan ID
           notesData = notesData.filter((note) => note.id !== noteId);
-          // Menyimpan kembali data ke penyimpanan lokal jika diperlukan
           localStorage.setItem("notesData", JSON.stringify(notesData));
         } catch (error) {
           console.error("Penghapusan Catatan Gagal :", error);
