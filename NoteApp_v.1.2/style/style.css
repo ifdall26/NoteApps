@@ -10,6 +10,7 @@ body {
 #app {
   max-width: 600px;
   margin: 20px auto;
+  margin-top: 150px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
