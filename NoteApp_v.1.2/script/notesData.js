@@ -1,11 +1,11 @@
-const notesData = [
-  // {
-  //   id: "notes-jT-jjsyz61J8XKiI",
-  //   title: "Welcome to Notes, Dimas!",
-  //   body: "Welcome to Notes! This is your first note. You can archive it, delete it, or create new ones.",
-  //   createdAt: "2022-07-28T10:03:12.594Z",
-  //   archived: false,
-  // },
+let notesData = [
+  {
+    id: "notes-jT-jjsyz61J8XKiI",
+    title: "Welcome to Notes, Dimas!",
+    body: "Welcome to Notes! This is your first note. You can archive it, delete it, or create new ones.",
+    createdAt: "2022-07-28T10:03:12.594Z",
+    archived: false,
+  },
   {
     id: "notes-aB-cdefg12345",
     title: "Meeting Agenda",
@@ -106,5 +106,16 @@ const notesData = [
   },
 ];
 
-console.log(notesData);
-export { notesData };
+function getNotes() {
+  return notesData;
+}
+
+function addNote(newNote) {
+  notesData.push(newNote);
+}
+
+function deleteNote(noteId) {
+  notesData = notesData.filter((note) => note.id !== noteId);
+}
+
+export { getNotes, addNote, deleteNote };

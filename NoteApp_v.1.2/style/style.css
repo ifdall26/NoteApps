@@ -5,6 +5,7 @@ body {
   /* background-color: #f0f0f0; */
   background-image: url(../img/bodybg2.jpg);
   background-attachment: fixed;
+  background-size: cover;
 }
 
 #app {
@@ -57,6 +58,7 @@ note-item {
 }
 
 .note {
+  z-index: -1;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -77,6 +79,7 @@ app-header {
 }
 
 header {
+  z-index: 9999;
   background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
