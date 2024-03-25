@@ -9,7 +9,7 @@ class AppHeader extends HTMLElement {
                     color: #fff;
                     padding: 10px 20px;
                     text-align: center;
-                    height : 100px;
+                    height : 70px;
                     position : fixed;
                     width : 100%;
                     top : 0;
@@ -19,7 +19,7 @@ class AppHeader extends HTMLElement {
                 
                 h1 {
                     margin: 0;
-                    line-height : 100px;
+                    line-height : 70px;
                 }
             </style>
             <header>
