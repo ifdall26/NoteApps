@@ -4,7 +4,7 @@ function displayNotes() {
   const noteList = document.getElementById("noteList");
   noteList.innerHTML = "";
 
-  const notes = getNotes(); // Menggunakan fungsi getNotes untuk mendapatkan catatan
+  const notes = getNotes();
   notes.forEach((note) => {
     const noteElement = document.createElement("note-item");
     noteElement.innerHTML = `
@@ -28,7 +28,7 @@ function handleFormSubmit(event) {
       createdAt: new Date().toISOString(),
       archived: false,
     };
-    addNote(newNote); // Menambahkan catatan menggunakan fungsi addNote
+    addNote(newNote);
     displayNotes();
     document.getElementById("noteForm").reset();
   } else {
@@ -40,14 +40,12 @@ document
   .getElementById("noteForm")
   .addEventListener("submit", handleFormSubmit);
 
-// Initialize data from localStorage if available
 displayNotes();
 
-// Listen for click events on note items and delegate to deleteNote function
 document.getElementById("noteList").addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-btn")) {
     const noteId = event.target.closest("note-item").getAttribute("data-id");
-    deleteNote(noteId); // Menghapus catatan menggunakan fungsi deleteNote
+    deleteNote(noteId);
     displayNotes();
   }
 });
