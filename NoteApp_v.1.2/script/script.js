@@ -10,6 +10,7 @@ function displayNotes() {
     noteElement.innerHTML = `
         <span slot="title">${note.title}</span>
         <span slot="body">${note.body.replace(/\n/g, "<br>")}</span>
+        <button class="delete-btn">Delete</button>
     `;
     noteElement.setAttribute("data-id", note.id);
     noteList.appendChild(noteElement);
@@ -18,8 +19,26 @@ function displayNotes() {
 
 function handleFormSubmit(event) {
   event.preventDefault();
-  const noteTitle = document.getElementById("noteTitle").value;
-  const noteBody = document.getElementById("noteBody").value;
+  const noteTitle = document.getElementById("noteTitle").value.trim();
+  const noteBody = document.getElementById("noteBody").value.trim();
+  const noteTitleInput = document.getElementById("noteTitle");
+  const noteBodyInput = document.getElementById("noteBody");
+
+  // Validasi judul catatan
+  if (!noteTitle) {
+    noteTitleInput.setCustomValidity("Title cannot be empty");
+  } else {
+    noteTitleInput.setCustomValidity("");
+  }
+
+  // Validasi isi catatan
+  if (!noteBody) {
+    noteBodyInput.setCustomValidity("Note body cannot be empty");
+  } else {
+    noteBodyInput.setCustomValidity("");
+  }
+
+  // Jika kedua validasi terpenuhi, tambahkan catatan
   if (noteTitle && noteBody) {
     const newNote = {
       id: `note-${Math.random().toString(36).substr(2, 9)}`,
@@ -31,8 +50,6 @@ function handleFormSubmit(event) {
     addNote(newNote);
     displayNotes();
     document.getElementById("noteForm").reset();
-  } else {
-    alert("Please enter both title and body for the note.");
   }
 }
 
