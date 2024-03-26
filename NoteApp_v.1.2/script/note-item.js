@@ -48,9 +48,7 @@ class NoteItem extends HTMLElement {
               </div>
           `;
 
-    // Mengambil tombol delete
     this.deleteButton = this.shadowRoot.querySelector(".delete-button");
-    // Menambahkan event listener untuk tombol delete
     this.deleteButton.addEventListener("click", () => {
       this.dispatchEvent(new CustomEvent("delete", { bubbles: true }));
     });

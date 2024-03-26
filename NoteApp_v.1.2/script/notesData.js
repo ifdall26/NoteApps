@@ -107,22 +107,16 @@ let notesData = [
 ];
 
 export function getNotes() {
-  const data = localStorage.getItem("notesData");
-  return data ? JSON.parse(data) : [];
+  const storedData = localStorage.getItem("notesData");
+  return storedData ? JSON.parse(storedData) : notesData;
 }
 
 export function addNote(newNote) {
-  const notes = getNotes();
-  notes.push(newNote);
-  localStorage.setItem("notesData", JSON.stringify(notes));
+  notesData.push(newNote);
+  localStorage.setItem("notesData", JSON.stringify(notesData));
 }
 
-// Fungsi untuk menghapus catatan dari local storage berdasarkan ID
 export function deleteNote(noteId) {
-  // Mengambil catatan dari local storage
-  let notes = getNotes();
-  // Menghapus catatan dengan ID yang sesuai
-  notes = notes.filter((note) => note.id !== noteId);
-  // Menyimpan kembali array catatan yang telah diperbarui ke local storage
-  localStorage.setItem("notesData", JSON.stringify(notes));
+  notesData = notesData.filter((note) => note.id !== noteId);
+  localStorage.setItem("notesData", JSON.stringify(notesData));
 }

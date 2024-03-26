@@ -1,23 +1,27 @@
 import { getNotes, addNote, deleteNote } from "./notesData.js";
 
-function displayNotes() {
+function displayNotes(notes) {
   const noteList = document.getElementById("noteList");
   noteList.innerHTML = "";
 
-  const notes = getNotes();
   notes.forEach((note) => {
     const noteElement = document.createElement("note-item");
+    noteElement.setAttribute("data-id", note.id); // Menambahkan atribut khusus
     noteElement.innerHTML = `
         <span slot="title">${note.title}</span>
         <span slot="body">${note.body.replace(/\n/g, "<br>")}</span>
     `;
     noteList.appendChild(noteElement);
 
-    // Menangani peristiwa delete
     noteElement.addEventListener("delete", () => {
       deleteNoteHandler(note.id);
     });
   });
+}
+
+function deleteNoteHandler(noteId) {
+  deleteNote(noteId);
+  displayNotes(getNotes());
 }
 
 function handleFormSubmit(event) {
@@ -25,19 +29,16 @@ function handleFormSubmit(event) {
   const noteTitle = document.getElementById("noteTitle").value.trim();
   const noteBody = document.getElementById("noteBody").value.trim();
 
-  // Validasi judul catatan
   if (!noteTitle) {
     alert("Title cannot be empty");
     return;
   }
 
-  // Validasi isi catatan
   if (!noteBody) {
     alert("Note body cannot be empty");
     return;
   }
 
-  // Jika kedua validasi terpenuhi, tambahkan catatan
   const newNote = {
     id: `note-${Math.random().toString(36).substr(2, 9)}`,
     title: noteTitle,
@@ -46,17 +47,16 @@ function handleFormSubmit(event) {
     archived: false,
   };
   addNote(newNote);
-  displayNotes();
+  const notes = getNotes(); // Get updated notes after adding new note
+  displayNotes(notes);
   document.getElementById("noteForm").reset();
-}
-
-function deleteNoteHandler(noteId) {
-  deleteNote(noteId);
-  displayNotes();
 }
 
 document
   .getElementById("noteForm")
   .addEventListener("submit", handleFormSubmit);
 
-displayNotes();
+document.addEventListener("DOMContentLoaded", () => {
+  const notes = getNotes(); // Get notes from notesData.js
+  displayNotes(notes); // Display notes when the page loads
+});
