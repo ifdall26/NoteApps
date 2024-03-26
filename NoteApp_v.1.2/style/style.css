@@ -10,7 +10,7 @@ body {
 #app {
   max-width: 600px;
   margin: 20px auto;
-  margin-top: 120px;
+  margin-top: 100px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -72,13 +72,13 @@ note-item {
 
 @media screen and (max-width: 768px) {
   #app {
-    width: 95%; /* Adjust width for smaller screens */
+    width: 95%;
   }
 }
 
 @media screen and (max-width: 480px) {
   input[type="text"],
   textarea {
-    width: 95%; /* Adjust width to fill container */
+    width: 95%;
   }
 }
