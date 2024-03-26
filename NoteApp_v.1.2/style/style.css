@@ -2,7 +2,6 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  /* background-color: #f0f0f0; */
   background-image: url(../img/bg.jpg);
   background-attachment: fixed;
   background-size: cover;
@@ -49,16 +48,13 @@ note-item {
   display: block;
 }
 
-app-header {
-  display: block;
-}
-
-note-item {
-  display: block;
+#noteList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 
 .note {
-  z-index: -1;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -74,18 +70,15 @@ note-item {
   margin-bottom: 0;
 }
 
-app-header {
-  display: block;
+@media screen and (max-width: 768px) {
+  #app {
+    width: 95%; /* Adjust width for smaller screens */
+  }
 }
 
-header {
-  z-index: 9999;
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  text-align: center;
-}
-
-h1 {
-  margin: 0;
+@media screen and (max-width: 480px) {
+  input[type="text"],
+  textarea {
+    width: 95%; /* Adjust width to fill container */
+  }
 }
