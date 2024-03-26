@@ -1,4 +1,4 @@
-import { getNotes, addNote } from "./notesData.js";
+import { getNotes, addNote, deleteNote } from "./notesData.js";
 
 function displayNotes() {
   const noteList = document.getElementById("noteList");
@@ -12,6 +12,11 @@ function displayNotes() {
         <span slot="body">${note.body.replace(/\n/g, "<br>")}</span>
     `;
     noteList.appendChild(noteElement);
+
+    // Menangani peristiwa delete
+    noteElement.addEventListener("delete", () => {
+      deleteNoteHandler(note.id);
+    });
   });
 }
 
@@ -43,6 +48,11 @@ function handleFormSubmit(event) {
   addNote(newNote);
   displayNotes();
   document.getElementById("noteForm").reset();
+}
+
+function deleteNoteHandler(noteId) {
+  deleteNote(noteId);
+  displayNotes();
 }
 
 document
