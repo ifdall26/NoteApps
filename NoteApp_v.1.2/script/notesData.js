@@ -106,16 +106,31 @@ let notesData = [
   },
 ];
 
+// Fungsi untuk mendapatkan catatan dari local storage
 function getNotes() {
-  return notesData;
+  // Mengambil data dari local storage, jika tidak ada, kembalikan array kosong
+  const notes = JSON.parse(localStorage.getItem("notes")) || [];
+  return notes;
 }
 
+// Fungsi untuk menambahkan catatan baru ke local storage
 function addNote(newNote) {
-  notesData.push(newNote);
+  // Mengambil catatan dari local storage
+  let notes = getNotes();
+  // Menambahkan catatan baru ke array
+  notes.push(newNote);
+  // Menyimpan kembali array catatan ke local storage
+  localStorage.setItem("notes", JSON.stringify(notes));
 }
 
+// Fungsi untuk menghapus catatan dari local storage berdasarkan ID
 function deleteNote(noteId) {
-  notesData = notesData.filter((note) => note.id !== noteId);
+  // Mengambil catatan dari local storage
+  let notes = getNotes();
+  // Menghapus catatan dengan ID yang sesuai
+  notes = notes.filter((note) => note.id !== noteId);
+  // Menyimpan kembali array catatan yang telah diperbarui ke local storage
+  localStorage.setItem("notes", JSON.stringify(notes));
 }
 
 export { getNotes, addNote, deleteNote };
